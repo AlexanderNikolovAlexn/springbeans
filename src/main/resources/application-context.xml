@@ -30,7 +30,7 @@
 
 
     <!-- Test Bean Instantiation -->
-    <bean class="com.samodeika.spring.XMLConfiguration.beans.BeanA"/>
+    <bean class="com.samodeika.spring.XMLConfiguration.beans.BeanA" init-method="init" destroy-method="destroy"/>
 
     <bean id="alexBean" class="com.samodeika.spring.XMLConfiguration.beans.BeanB">
         <constructor-arg value="someValueHere"/>

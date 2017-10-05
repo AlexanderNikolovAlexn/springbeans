@@ -20,4 +20,11 @@ public class BeanA {
         System.out.println("I`m Dev!Ref: " + this.toString());
     }
 
+    public void init() {
+        System.out.println("Executed init method!");
+    }
+
+    public void destroy() {
+        System.out.println("Executed destroy method!");
+    }
 }

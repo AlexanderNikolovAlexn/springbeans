@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.inject.Inject;
+
 @Component
 public class Car {
 
@@ -23,7 +25,8 @@ public class Car {
         return engine;
     }
 
-    @Autowired
+    @Inject
+    //@Autowired
     public void setEngine(Engine engine) {
         this.engine = engine;
     }
