@@ -15,7 +15,7 @@
     <bean id="qa2" class="com.samodeika.spring.AnnotationConfiguration.beans.Qa">
         <property name="name" value="Kalin"/>
     </bean>
-    <bean id="qa3" class="com.samodeika.spring.AnnotationConfiguration.beans.Qa">
+    <bean name="qa3" class="com.samodeika.spring.AnnotationConfiguration.beans.Qa">
         <property name="name" value="Pesho"/>
     </bean>
 
@@ -38,7 +38,11 @@
 
     <bean class="com.samodeika.spring.XMLConfiguration.beans.InnerBean">
         <property name="age" value="30"/>
-        <property name="beanB" ref="alexBean"/>
+        <property name="beanB">
+            <bean class="com.samodeika.spring.XMLConfiguration.beans.BeanB">
+                <constructor-arg value="Inner Bean"/>
+            </bean>
+        </property>
     </bean>
 
     <bean id="constructorInstance" class="com.samodeika.spring.XMLConfiguration.beans.CalendarBean" >

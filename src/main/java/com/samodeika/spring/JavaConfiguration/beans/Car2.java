@@ -1,18 +1,12 @@
 package com.samodeika.spring.JavaConfiguration.beans;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 
 @Component
-@Primary
-public class Car implements ICar{
+public class Car2 implements ICar{
 
     @Value("Yellow")
     private String colour;

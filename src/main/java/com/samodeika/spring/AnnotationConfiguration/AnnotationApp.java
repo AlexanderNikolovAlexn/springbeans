@@ -10,6 +10,18 @@ public class AnnotationApp {
 
     public static void main(String[] args) {
 
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        LazyBean lazyBean = context.getBean(LazyBean.class);
+        System.out.println(lazyBean.getBeanName());
+
+        EagerBean eagerBean = context.getBean(EagerBean.class);
+        System.out.println(eagerBean.getBeanName());
+
         // Test bean Instantiation
         //testBeanInstantiation();
 
@@ -18,7 +30,7 @@ public class AnnotationApp {
         // 2) Prototype scope - new instance every time
         // 3) Request scope(Web only) - valid for the request only(until server sends the response)
         // 4) Session scope(Web only) - valid for user session only(during navigation of some website until you leave it/logout)
-        testBeanScopes();
+        //testBeanScopes();
     }
 
     private static void testBeanScopes() {
@@ -27,7 +39,7 @@ public class AnnotationApp {
         SingletonBean singletonBean2 = context.getBean(SingletonBean.class);
 
         System.out.println("Are SingletonScopeBean instances the same: "
-                + (singletonBean1 == singletonBean1));
+                + (singletonBean1 == singletonBean2));
 
         PrototypeScope prototypeScope1 = context.getBean(PrototypeScope.class);
         PrototypeScope prototypeScope2 = context.getBean(PrototypeScope.class);

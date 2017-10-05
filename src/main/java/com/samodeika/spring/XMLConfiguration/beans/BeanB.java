@@ -9,6 +9,8 @@ public class BeanB {
     }
 
     public BeanB(String name) {
+
+        System.out.println("Constructor Injection!");
         this.name = name;
     }
 

@@ -1,5 +1,6 @@
 package com.samodeika.spring.XMLConfiguration;
 
+import com.samodeika.spring.AnnotationConfiguration.beans.Qa;
 import com.samodeika.spring.XMLConfiguration.beans.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -10,8 +11,17 @@ public class XMLApp {
 
     public static void main(String[] args) {
 
+        // In class examples
+
+        //Qa qa = context.getBean("qa1", Qa.class);
+        //System.out.println("Test name qa1: " + qa);
+        BeanB beanB = context.getBean(BeanB.class);
+        System.out.println("BeanB" + beanB);
+
+//        ((ClassPathXmlApplicationContext)context).destroy();
+
         // Test bean Instantiation
-        testBeanInstantiation();
+        //testBeanInstantiation();
 
         // Test bean Scopes
         // 1) Singleton scope - default one

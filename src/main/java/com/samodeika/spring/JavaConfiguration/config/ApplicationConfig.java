@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ImportResource;
 //@ImportResource("application-context.xml")
 public class ApplicationConfig {
 
-    //<bean class="com.samodeika.spring.XMLConfiguration.beans.BeanA"/>
+    //<bean name = "car, yellowCar" class="com.samodeika.spring.XMLConfiguration.beans.BeanA"/>
 //    @Bean(name = {"car", "yellowCar"})
 //    public Car car() {
 //        return new Car();
