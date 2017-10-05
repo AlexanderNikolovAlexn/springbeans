@@ -1,8 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean class="com.samodeika.spring.BeanA"/>
+
+    <!-- Annotation Config -->
+    <!--<context:annotation-config/>-->
+    <context:component-scan base-package="com.samodeika.spring.AnnotationConfiguration"/>
+
+    <bean id="qa1" class="com.samodeika.spring.AnnotationConfiguration.beans.Qa">
+        <property name="name" value="Yusein"/>
+    </bean>
+    <bean id="qa2" class="com.samodeika.spring.AnnotationConfiguration.beans.Qa">
+        <property name="name" value="Kalin"/>
+    </bean>
+    <bean id="qa3" class="com.samodeika.spring.AnnotationConfiguration.beans.Qa">
+        <property name="name" value="Pesho"/>
+    </bean>
+
+    <bean id="pm1" class="com.samodeika.spring.AnnotationConfiguration.beans.ProjectManager">
+        <property name="name" value="Mariana"/>
+        <qualifier value="main"/>
+    </bean>
+
+    <bean id="pm2" class="com.samodeika.spring.AnnotationConfiguration.beans.ProjectManager">
+        <property name="name" value="Maxim"/>
+    </bean>
+
+
+    <!-- Test Bean Instantiation -->
+    <bean class="com.samodeika.spring.XMLConfiguration.beans.BeanA"/>
+
+    <bean id="alexBean" class="com.samodeika.spring.XMLConfiguration.beans.BeanB">
+        <constructor-arg value="someValueHere"/>
+    </bean>
+
+    <bean class="com.samodeika.spring.XMLConfiguration.beans.InnerBean">
+        <property name="age" value="30"/>
+        <property name="beanB" ref="alexBean"/>
+    </bean>
+
+    <bean id="constructorInstance" class="com.samodeika.spring.XMLConfiguration.beans.CalendarBean" >
+        <constructor-arg>
+            <bean class="java.util.Calendar" factory-method="getInstance"/>
+        </constructor-arg>
+    </bean>
+
+    <bean id="customFactory" class="com.samodeika.spring.XMLConfiguration.factories.CustomFactory"/>
+    <bean id="factoryCalendarBean" factory-bean="customFactory" factory-method="getCalendarInstance"/>
+
+    <!-- Test Bean Scopes -->
+    <bean class="com.samodeika.spring.XMLConfiguration.beans.SingletonScopeBean" scope="singleton"/>
+    <bean class="com.samodeika.spring.XMLConfiguration.beans.PrototypeScopeBean" scope="prototype"/>
+
+    <!-- Test Bean Collections -->
+
+    <util:set id="devSet" set-class="java.util.HashSet">
+        <value>Marti</value>
+        <value>Pesho</value>
+        <value>Viktor</value>
+    </util:set>
+
+    <bean id="collectionBean" class="com.samodeika.spring.XMLConfiguration.beans.CollectionBean">
+        <property name="list">
+            <list>
+                <value>Yavor</value>
+                <value>Andrey</value>
+                <value>Marti</value>
+                <value>Stoyan</value>
+            </list>
+        </property>
+        <property name="set" ref="devSet" />
+        <property name="map">
+            <map>
+                <entry key="dev" value="Ivan"/>
+                <entry key="qa" value="Yusein"/>
+                <entry key="fa" value="Viktor"/>
+                <entry key="pm" value="Mariana"/>
+                <entry key="dev" value="Georgi"/>
+            </map>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="project">Scorpio</prop>
+                <prop key="company">Luxoft</prop>
+            </props>
+        </property>
+    </bean>
 
 </beans>

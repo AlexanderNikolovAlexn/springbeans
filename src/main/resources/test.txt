@@ -1,0 +1,16 @@
+Simple message
+All Known Implementing Classes:
+AbstractFileResolvingResource
+AbstractResource
+ByteArrayResource
+ClassPathResource
+DefaultResourceLoader.ClassPathContextResource
+DescriptiveResource
+FileSystemResource
+InputStreamResource
+PathResource
+ServletContextResource
+TransformedResource
+TransformedResource
+UrlResource
+VfsResource
